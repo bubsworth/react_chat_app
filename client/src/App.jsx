@@ -74,22 +74,21 @@ function App() {
   return (
     <div className="App">
       <div className="messageHeader">
-        <h1>Messages</h1>
-        <p>Guid: {guid}</p>
+        <h1>ChatterBox</h1>
+        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h3>
+        <p><b>Guid:</b> {guid}</p>
       </div>
-      <div className="messages" id="messages">
-        {messages.map((message) => (
-          <div className="message" key={message.id}>
-            <p>{message.body}</p>
-          </div>
-        ))}
-      </div>
-      <div className="messageForm">
-        <form onSubmit={handleSubmit}>
-          <input className="messageInput" type="text" name="message" />
-          <button className="messageButton" type="submit">
-            Send
-          </button>
+      <div className="messagesContainer">
+        <ul className="messages" id="messages">
+          {messages.map((message) => (
+            <li className="message" key={message.id}>
+              <p>{message.body}</p>
+            </li>
+          ))}
+        </ul> 
+        <form className="messageForm" onSubmit={handleSubmit}>
+          <input className="messageInput" type="text" name="message" placeholder="Enter your message..." />
+          <button className="messageButton" type="submit">Send</button>
         </form>
       </div>
     </div>

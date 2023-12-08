@@ -8,34 +8,55 @@
   width: 100%;
 }
 
+ul, li { 
+  background: #f7f7f77b;
+  list-style-type: none 
+}
+
+.messagesContainer {
+  margin-top: 100px;
+  padding: 0 15px;
+  align-items: center;
+}
+
 .messages {
   height: 60%;
   overflow-y: scroll;
-  padding: 0 20px;
+  max-height: 400px;
+  scroll-behavior: smooth;
+}
 
-  margin: 10% auto 0 auto;
-  width: 80%
+.message {
+  background: #17A9FD;
+  border-radius: 20px;
+  padding: 0.1rem 1rem;
+  margin: 10px;
+  font-size: 1rem;
+  color: #ffffff;
 }
 
 .messageForm {
-  height: 10%;
-  width: 100%;
+  margin: 0 0 0 40px;
 }
 
 .messageInput {
   height: 40px;
-  width: 80%;
+  width: 85%;
+  color: #666666;
+  font-weight: 400;
+  border: 1px solid #858181;
+  border-radius: 10px;
+  padding: 0 10px;
 }
+
 .messageButton {
-  height: 46px;
+  height: 45px;
   width: 10%;
-  border: 2px solid #4CAF50;
   padding: 1px 2px;
+  margin-left: 10px;
   background-color: #4CAF50;
   color: white;
-  font-size: 16px;
   cursor: pointer;
-  border-radius: 0px;
 }
 
 .messageHeader {
