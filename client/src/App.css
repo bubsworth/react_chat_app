@@ -9,14 +9,16 @@
 }
 
 ul, li { 
-  background: #f7f7f77b;
-  list-style-type: none 
+  background: #f1f1f1;
+  list-style-type: none;
+  padding-left: 0;
 }
 
 .messagesContainer {
-  margin-top: 100px;
+  margin-top: 110px;
   padding: 0 15px;
   align-items: center;
+  height: 75%;
 }
 
 .messages {
@@ -27,7 +29,7 @@ ul, li {
 }
 
 .message {
-  background: #17A9FD;
+  background: #4285F4;
   border-radius: 20px;
   padding: 0.1rem 1rem;
   margin: 10px;

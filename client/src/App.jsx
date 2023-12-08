@@ -76,7 +76,7 @@ function App() {
       <div className="messageHeader">
         <h1>ChatterBox</h1>
         <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h3>
-        <p><b>Guid:</b> {guid}</p>
+        <p>Guid: {guid}</p>
       </div>
       <div className="messagesContainer">
         <ul className="messages" id="messages">
