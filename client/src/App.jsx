@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
-import "./App.css"
+import { useState, useEffect } from "react";
+import "./App.css";
 
 const ws = new WebSocket("ws://localhost:3000/cable");
 
@@ -15,24 +15,23 @@ function App() {
     ws.send(
       JSON.stringify({
         command: "subscribe",
-        idenitifier: JSON.stringify({
+        identifier: JSON.stringify({
           id: guid,
           channel: "MessagesChannel",
         }),
       })
-    )
-  }
+    );
+  };
 
-  ws.onmessage = (event) => {
-    const data = JSON.parse(event.data);
+  ws.onmessage = (e) => {
+    const data = JSON.parse(e.data);
     if (data.type === "ping") return;
     if (data.type === "welcome") return;
     if (data.type === "confirm_subscription") return;
 
     const message = data.message;
-
     setMessagesAndScrollDown([...messages, message]);
-  }
+  };
 
   useEffect(() => {
     fetchMessages();
@@ -42,36 +41,35 @@ function App() {
     resetScroll();
   }, [messages]);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const body = event.target.message.value;
-    event.target.message.value = "";
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const body = e.target.message.value;
+    e.target.message.value = "";
 
     await fetch("http://localhost:3000/messages", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ body }),
-    })
+    });
   };
 
   const fetchMessages = async () => {
-    const response = await fetchMessages("http://localhost:3000/messages");
+    const response = await fetch("http://localhost:3000/messages");
     const data = await response.json();
     setMessagesAndScrollDown(data);
   };
 
   const setMessagesAndScrollDown = (data) => {
     setMessages(data);
-    if (!messagesContainer) return;
     resetScroll();
-  }
+  };
 
   const resetScroll = () => {
     if (!messagesContainer) return;
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
-  }
+  };
 
   return (
     <div className="App">
@@ -88,8 +86,10 @@ function App() {
       </div>
       <div className="messageForm">
         <form onSubmit={handleSubmit}>
-          <input className="messageInput" type="text" name="messages"/>
-          <button className="messageButton" type="submit">Send</button>
+          <input className="messageInput" type="text" name="message" />
+          <button className="messageButton" type="submit">
+            Send
+          </button>
         </form>
       </div>
     </div>
